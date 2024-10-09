@@ -5,15 +5,15 @@ This study provides a new method and perspective for properties prediction and m
 ## Results
 * The proposed prediction model can efficiently predict chemical properties of a large scale of molecules.
 * The molecule generation model performs well on generating molecules with desired properties.
-* * The generation model is utilized to create analogs of TrkB receptor agonist, which proves the accessibility of the proposed model on conditionally
+* The generation model is utilized to create analogs of TrkB receptor agonist, which proves the accessibility of the proposed model on conditionally
 ## Workflow of the Molecular Generator
-![image](https://github.com/user-attachments/assets/e8af4e2c-c8a8-4b49-87eb-1544dca4ae2c)
+![image](https://github.com/Helen9125/A-Conditional-Molecular-Generator-by-a-Transformer-Based-Language-Model/blob/main/graph/1.png)
 ## Datasets
 Two datasets containing millions of molecules——MOSES and GuacaMol——are used to train the model.
  generating real drugs. 
 ## Architecture of Models
 ### Chemical properties prediction model
-![image](https://github.com/user-attachments/assets/19729a9b-3ce9-41b6-95c9-0a137caf3784)
+![image](https://github.com/Helen9125/A-Conditional-Molecular-Generator-by-a-Transformer-Based-Language-Model/blob/main/graph/2.png)
 ### Conditional molecular generation model
-![image](https://github.com/user-attachments/assets/7e0c3561-d6bc-45fc-b54e-649470a8925e)
+![image](https://github.com/Helen9125/A-Conditional-Molecular-Generator-by-a-Transformer-Based-Language-Model/blob/main/graph/3.png)
 
