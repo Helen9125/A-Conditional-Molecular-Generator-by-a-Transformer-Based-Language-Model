@@ -222,10 +222,7 @@ def get_mol(smiles_or_mol):
 
 
 def detokenize_for_input(sequence, itos_dict):
-    # Convert tensor to a list of lists
     nested_tokens = [itos_dict[token] for token in sequence]
-
-    # Join the tokens to form a string for each sequence in the batch
     generated_smiles = ''.join(nested_tokens)
     #print(generated_smiles)
     
@@ -785,10 +782,7 @@ class PytorchGELUTanh(nn.Module):
 
 #detokenization
 def detokenize(predictions, itos_dict):
-    # Convert tensor to a list of lists
     nested_tokens = [[itos_dict[token.item()] for token in sequence] for sequence in predictions]
-
-    # Join the tokens to form a string for each sequence in the batch
     generated_smiles = [''.join(sequence) for sequence in nested_tokens]
     #print(generated_smiles)
     
@@ -1166,11 +1160,10 @@ acc_df.to_csv('/home/10714016/gpt/result/combined_data/whole/c_acc_cloze_smiles_
 
 import matplotlib.pyplot as plt
 
-plt.figure(figsize=(8, 6))  # Adjust the figure size if needed
+plt.figure(figsize=(8, 6)) 
 plt.plot(range(1, len(train_losses) + 1), train_losses, linewidth=2.0, color='royalblue', label='Training Loss')
 plt.plot(range(1, len(val_losses) + 1), val_losses, linewidth=2.0, color='orange', label='Validation Loss')
 
-# Adding labels and title
 #epochs = [1, 5, 10, 15, 20, 25, 30]
 epochs = [1, 10, 20, 30, 40, 50]
 plt.xticks(epochs, fontsize=12)
