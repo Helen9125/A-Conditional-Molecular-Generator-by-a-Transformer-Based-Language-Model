@@ -931,10 +931,9 @@ class smiles_BERT(nn.Module):
 
 from sklearn.model_selection import train_test_split
 
-# Define the proportion for the training set (0.7 for 70%)
 training_proportion = 0.7
 t_data = data.head(1000)
-# Split the data into training and testing sets
+
 train_data, val_data = train_test_split(t_data, test_size=1 - training_proportion, random_state=42)
 
 train_data = TestDataSet(train_data, whole_string, 
@@ -959,8 +958,6 @@ val_dataloader = DataLoader(val_data, batch_size=512)
 # In[44]:
 
 
-# Initialize and add the missing keys for the new feature
-# You may need to adjust the initialization method based on your requirements
 #checkpoint["encoder.prop_nn.weight"] = torch.randn((64, 5))
 #checkpoint["encoder.prop_nn.bias"] = torch.zeros(64)
 
@@ -978,7 +975,7 @@ checkpoint = torch.load(ck_path)
 model = smiles_BERT(config)
 model.load_state_dict(checkpoint)
 device = torch.device("cuda:1" if torch.cuda.is_available() else "cpu")
-model.to(device) # 移动模型到cuda
+model.to(device) 
 
 
 # In[65]:
@@ -1004,7 +1001,6 @@ def adjust_learning_rate(optimizer, epoch, start_lr):
 
 #save checkpoint
 def save_checkpoint(model, ckpt_path):
-    # DataParallel wrappers keep raw model object in .module attribute
     logger.info("saving %s", ckpt_path)
     torch.save(model.state_dict(), ckpt_path)
 
@@ -1061,7 +1057,7 @@ for epoch in range(10):
     
     # Validation
     if True:
-        model.eval()  # Set the model to evaluation mode
+        model.eval()  
         
         total_val_loss = 0.0
         val_total_cloze_correct = 0
@@ -1103,11 +1099,10 @@ for epoch in range(10):
 
 import matplotlib.pyplot as plt
 
-plt.figure(figsize=(8, 6))  # Adjust the figure size if needed
+plt.figure(figsize=(8, 6))  
 plt.plot(range(1, len(train_losses) + 1), train_losses, linewidth=2.0, color='royalblue', label='Training Loss')
 plt.plot(range(1, len(val_losses) + 1), val_losses, linewidth=2.0, color='orange', label='Validation Loss')
 
-# Adding labels and title
 epochs = [1, 5, 10, 15, 20, 25, 30] #, 35, 40, 45, 50]
 #epochs = [1, 5, 10, 15, 20]
 plt.xticks(epochs, fontsize=12)
